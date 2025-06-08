@@ -12,7 +12,13 @@ import random
 import pandas as pd
 import statistics
 
-
+'''
+Issues:
+- consumption equation is wrong
+- reservation wage is not updating
+- firms are not adjusting prices with sufficient prob (should be 0.75 but here it's 0.25)
+- marginal cost is zero?
+'''
 # Model class
 class MacroModel(Model):
 
@@ -79,6 +85,7 @@ class MacroModel(Model):
             p = np.random.normal(loc=0.1, scale=0.02)
             open_position = 0
 
+            # Um all firms are assumed to have marginal cost zero??
             f = Firm(i + init_households, self, w, 0, 0, 0, inv * 0.9, inv * 1.1, 0, 0, p,
                      p * 0.9, p * 1.1, delta, Phi_min, Phi_max, phi_min, phi_max, theta, lambda_,
                      gamma, Theta, open_position, 0, 0, 0)
